@@ -61,8 +61,8 @@ function InstallPlugin_zblogofcloudflare()
 
     if (!$zbp->Config('zblogofcloudflare')->HasKey('version')) {
         $zbp->Config('zblogofcloudflare')->version = 1.0;
-        $zbp->Config('zblogofcloudflare')->AccountID = '';
-        $zbp->Config('zblogofcloudflare')->APIKey = '';
+        $zbp->Config('zblogofcloudflare')->ZoneID = '';
+        $zbp->Config('zblogofcloudflare')->APIToken = '';
         $zbp->Config('zblogofcloudflare')->EnableScene = json_encode($cloudflare_cdn['scene']);
         $zbp->SaveConfig('zblogofcloudflare');
     }
