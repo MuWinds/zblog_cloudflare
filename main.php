@@ -16,8 +16,6 @@ if (!$zbp->CheckPlugin('zblogofcloudflare')) {
 $enable_scene = json_decode($zbp->Config('zblogofcloudflare')->EnableScene, true);
 
 if (count($_POST) > 0) {
-    CheckIsRefererValid();
-
     $zbp->Config('zblogofcloudflare')->ZoneID = GetVars('ZoneID', 'POST');
     $zbp->Config('zblogofcloudflare')->APIToken = GetVars('APIToken', 'POST');
 
