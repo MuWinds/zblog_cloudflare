@@ -40,7 +40,7 @@ function cloudflare_cdn_RefreshCache($url)
     curl_setopt($ch, CURLOPT_URL, "https://api.cloudflare.com/client/v4/zones/$zoneid/purge_cache");
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, "[$url]");
+    curl_setopt($ch, CURLOPT_POSTFIELDS, "{\"files\":[\"$url\"]}");
 
     $headers = array();
     $headers[] = "Authorization: $apitoken";
@@ -111,9 +111,9 @@ function cloudflare_cdn_Category(&$cate)
 {
     global $zbp, $enable_scene;
     if ($enable_scene['category']['current_category_all_post']) {
-        tencentcloud_cdn_RefreshCache($cate->Url);//分类
+        cloudflare_cdn_RefreshCache($cate->Url);//分类
     }
     if ($enable_scene['category']['index']) {
-        tencentcloud_cdn_RefreshCache($zbp->host);//首页
+        cloudflare_cdn_RefreshCache($zbp->host);//首页
     }
 }
